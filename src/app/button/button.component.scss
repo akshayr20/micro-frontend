@@ -1,0 +1,33 @@
+.btn {
+  text-decoration: none;
+  text-transform: capitalize;
+  cursor: pointer;
+  text-align: center;
+  color: #666666;
+  font-size: 16px;
+  font-weight: 400;
+  background-color: white;
+  border: 1px solid #979ea3;
+  border-radius: 4px;
+  padding: 8px 16px;
+}
+
+.primary {
+  box-shadow: 0 4px 10px 1px rgba(37, 92, 183, 0.3);
+  background-color: #4285f4;
+  border-color: #4285f4;
+  color: #ffffff;
+}
+
+.success {
+  box-shadow: 0 4px 10px 1px rgba(2, 137, 71, 0.3);
+  background-color: #1aa863;
+  border-color: #1aa863;
+  color: #ffffff;
+}
+
+.danger {
+  background-color: #a81818;
+  border-color: #a81818;
+  color: #fff;
+}
