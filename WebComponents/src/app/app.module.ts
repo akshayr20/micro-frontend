@@ -7,10 +7,11 @@ import { AvatarComponent } from './avatar/avatar.component';
 import { createCustomElement } from '@angular/elements';
 
 @NgModule({
-  declarations: [AppComponent, ButtonComponent],
+  declarations: [AppComponent, ButtonComponent, AvatarComponent],
   imports: [BrowserModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [AvatarComponent]
 })
 export class AppModule {
   constructor(private injector: Injector) {}

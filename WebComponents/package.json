@@ -8,7 +8,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "build": "ng build --prod --output-hashing=none  && npm run package",
-    "package": "cat ./dist/container/runtime-es2015.js ./dist/container/polyfills-es2015.js ./dist/container/scripts.js ./dist/container/main-es2015.js > custom-avatar-element.js"
+    "package": "cat ./dist/WebComponents/runtime-es2015.js ./dist/WebComponents/polyfills-es2015.js ./dist/WebComponents/scripts.js ./dist/WebComponents/main-es2015.js > custom-avatar-element.js"
   },
   "private": true,
   "dependencies": {
