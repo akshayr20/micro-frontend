@@ -12,13 +12,13 @@
     "directive-selector": [
       true,
       "attribute",
-      "app",
+      "orxe",
       "camelCase"
     ],
     "component-selector": [
       true,
       "element",
-      "app",
+      "orxe",
       "kebab-case"
     ],
     "import-blacklist": [

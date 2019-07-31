@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
+import { RouterService } from './router.service';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+	selector: 'orxe-root',
+	templateUrl: './app.component.html',
+	styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  constructor() {}
+	constructor(public routerService: RouterService) {}
 }
