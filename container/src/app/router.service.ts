@@ -9,16 +9,18 @@ export interface Attributes {
 })
 export class RouterService {
 	constructor() {}
-	public loadElement(tagSelector, attributes: Attributes) {
+	public loadElement(tagSelector, id, attributes: Attributes = null) {
 		if (tagSelector) {
 			const wrapper = document.createElement('div');
 			wrapper.setAttribute('id', tagSelector);
 			const webComp = document.createElement(tagSelector);
-			Object.keys(attributes).forEach(key => {
-				webComp.setAttribute(key, attributes[key]);
-			});
+			if (attributes) {
+				Object.keys(attributes).forEach(key => {
+					webComp.setAttribute(key, attributes[key]);
+				});
+			}
 			wrapper.appendChild(webComp);
-			document.getElementById('outlet').appendChild(wrapper);
+			document.getElementById(id).appendChild(wrapper);
 		}
 	}
 

@@ -10,7 +10,6 @@ import { createCustomElement } from '@angular/elements';
   declarations: [AppComponent, ButtonComponent, AvatarComponent],
   imports: [BrowserModule],
   providers: [],
-  bootstrap: [AppComponent],
   entryComponents: [AvatarComponent]
 })
 export class AppModule {
