@@ -2,14 +2,36 @@
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
-		<title>Document</title>
-		<script src="./packages/custom-button-element.js"></script>
-		<script src="./packages/custom-avatar-element.js"></script>
+		<title>Multiple angular elements</title>
+		<!-- Polyfills for Browsers supporting
+        Custom Elements. Needed b/c we downlevel
+        to ES5. See: @webcomponents/custom-elements
+    -->
+		<script src="./extern/native-shim.js"></script>
+
+		<!-- Polyfills for Browsers not supporting
+        Custom Elements. See: @webcomponents/custom-elements
+    -->
+		<script src="./extern/custom-elements.min.js"></script>
+
+		<!-- Zone.js -->
+		<!--
+    Consider excluding zone.js when creating
+    Custom Elements by using the noop zone.
+    -->
+		<script src="./extern/zone.js"></script>
+
+		<!-- Rx -->
+		<script src="./extern/rxjs.umd.js"></script>
+
+		<!-- Angular Packages -->
+		<script src="./extern/core.umd.js"></script>
+		<script src="./extern/common.umd.js"></script>
+		<script src="./extern/compiler.umd.js"></script>
+		<script src="./extern/platform-browser.umd.js"></script>
+		<script src="./extern/platform-browser-dynamic.umd.js"></script>
+		<script src="./extern/elements.umd.js"></script>
 	</head>
-	<body>
-		<app-button label="Button" className="success"></app-button>
-		<app-avatar src="./files/kitten.png"  size="lg" desc="kitten"></app-avatar>
-	</body>
+
+	<body></body>
 </html>

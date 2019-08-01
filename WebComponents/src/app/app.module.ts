@@ -10,13 +10,13 @@ import { createCustomElement } from '@angular/elements';
   declarations: [AppComponent, ButtonComponent, AvatarComponent],
   imports: [BrowserModule],
   providers: [],
-  entryComponents: [AvatarComponent]
+  entryComponents: [ButtonComponent]
 })
 export class AppModule {
   constructor(private injector: Injector) {}
 
   ngDoBootstrap() {
-    const avatar = createCustomElement(AvatarComponent, { injector: this.injector });
-    customElements.define('app-avatar', avatar);
+    const button = createCustomElement(ButtonComponent, { injector: this.injector });
+    customElements.define('app-button', button);
   }
 }
