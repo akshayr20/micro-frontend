@@ -8,12 +8,10 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { AppRoutingModule } from './app.route';
 import { HeaderComponent } from './header/header.component';
-import { APP_BASE_HREF } from '@angular/common';
 
 @NgModule({
   declarations: [AppComponent, SearchHotelComponent, UserProfileComponent, CheckoutComponent, HeaderComponent],
   imports: [BrowserModule, AppRoutingModule],
-  providers: [{ provide: APP_BASE_HREF, useValue: '/' }],
   entryComponents: [AppComponent]
   // bootstrap: [AppComponent]
 })

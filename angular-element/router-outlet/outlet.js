@@ -1,97 +1,91 @@
-!(function(e) {
-	var t = {};
-	function n(r) {
-		if (t[r]) return t[r].exports;
-		var o = (t[r] = { i: r, l: !1, exports: {} });
-		return e[r].call(o.exports, o, o.exports, n), (o.l = !0), o.exports;
+// @ts-check
+/**
+ * @description
+ * @class Outlet
+ * @extends {HTMLElement}
+ * https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements#Using_the_lifecycle_callbacks
+ * Custom Outlet Element
+ */
+class Outlet extends HTMLElement {
+	// Specify observed attributes so that
+	// attributeChangedCallback will work
+	static get observedAttributes() {
+		return ['tag', 'id', 'label'];
 	}
-	(n.m = e),
-		(n.c = t),
-		(n.d = function(e, t, r) {
-			n.o(e, t) || Object.defineProperty(e, t, { enumerable: !0, get: r });
-		}),
-		(n.r = function(e) {
-			'undefined' != typeof Symbol && Symbol.toStringTag && Object.defineProperty(e, Symbol.toStringTag, { value: 'Module' }),
-				Object.defineProperty(e, '__esModule', { value: !0 });
-		}),
-		(n.t = function(e, t) {
-			if ((1 & t && (e = n(e)), 8 & t)) return e;
-			if (4 & t && 'object' == typeof e && e && e.__esModule) return e;
-			var r = Object.create(null);
-			if ((n.r(r), Object.defineProperty(r, 'default', { enumerable: !0, value: e }), 2 & t && 'string' != typeof e))
-				for (var o in e)
-					n.d(
-						r,
-						o,
-						function(t) {
-							return e[t];
-						}.bind(null, o)
-					);
-			return r;
-		}),
-		(n.n = function(e) {
-			var t =
-				e && e.__esModule
-					? function() {
-							return e.default;
-					  }
-					: function() {
-							return e;
-					  };
-			return n.d(t, 'a', t), t;
-		}),
-		(n.o = function(e, t) {
-			return Object.prototype.hasOwnProperty.call(e, t);
-		}),
-		(n.p = ''),
-		n((n.s = 0));
-})([
-	function(e, t) {
-		class n extends HTMLElement {
-			static get observedAttributes() {
-				return ['tag', 'id', 'label'];
-			}
-			constructor() {
-				super();
-				const e = this.attachShadow({ mode: 'open' });
-				(this.wrapper = document.createElement('div')), e.appendChild(this.wrapper);
-			}
-			connectedCallback() {
-				this.loadElement();
-			}
-			attributeChangedCallback() {
-				this.loadElement();
-			}
-			loadElement() {
-				this.removeElement();
-				const e = this.getAttribute('id'),
-					t = this.getAttribute('label'),
-					n = this.getAttribute('tag');
-				if (n) {
-					this.wrapper.setAttribute('id', n);
-					const r = document.createElement(n);
-					r.setAttribute('label', t), this.wrapper.appendChild(r), document.getElementById(e).appendChild(this.wrapper);
-				}
-			}
-			removeElement() {
-				const e = this.getAttribute('tag');
-				if (e) {
-					const t = document.getElementById(e);
-					if (t) {
-						let e = t.lastElementChild;
-						for (; e; ) t.removeChild(e), (e = t.lastElementChild);
-					}
-				}
-			}
-			disconnectedCallback() {
-				this.removeElement();
-			}
-		}
-		try {
-			customElements.define('orxe-outlet', n);
-		} catch (e) {
-			const t = document.createElement('h3');
-			(t.innerHTML = "This site uses webcomponents which don't work in all browsers! Try this site in a browser that supports them!"), document.body.appendChild(t);
+	constructor() {
+		super();
+		const shadow = this.attachShadow({ mode: 'open' });
+		this.wrapper = document.createElement('div');
+		shadow.appendChild(this.wrapper);
+	}
+
+	/**
+	 * @description
+	 * connectedCallback: Invoked each time the custom element is appended into a document-connected element
+	 */
+	connectedCallback() {
+		this.loadElement();
+	}
+
+	/**
+	 * @description
+	 * lifecycle hook
+	 * The attributeChangedCallback() callback is run whenever one of the element's attributes is changed in some way
+	 */
+	attributeChangedCallback() {
+		this.loadElement();
+	}
+
+	/**
+	 * @description
+	 * Loads the custom web component in DOM
+	 */
+	loadElement() {
+		this.removeElement();
+		const id = this.getAttribute('id');
+		const label = this.getAttribute('label');
+		const tagSelector = this.getAttribute('tag');
+
+		if (tagSelector) {
+			this.wrapper.setAttribute('id', tagSelector);
+			const webComp = document.createElement(tagSelector);
+			webComp.setAttribute('label', label);
+			this.wrapper.appendChild(webComp);
+			document.getElementById(id).appendChild(this.wrapper);
 		}
 	}
-]);
+
+	/**
+	 * @description
+	 * Finds and Removes the Web Component from the DOM
+	 */
+	removeElement() {
+		const tagSelector = this.getAttribute('tag');
+		if (tagSelector) {
+			const wrapper = document.getElementById(tagSelector);
+			if (wrapper) {
+				let child = wrapper.lastElementChild;
+				while (child) {
+					wrapper.removeChild(child);
+					child = wrapper.lastElementChild;
+				}
+			}
+		}
+	}
+
+	/**
+	 * @description
+	 * disconnectedCallback: Invoked each time the custom element is disconnected from the document's DOM.
+	 */
+	disconnectedCallback() {
+		this.removeElement();
+	}
+}
+
+try {
+	customElements.define('orxe-outlet', Outlet);
+} catch (err) {
+	const h3 = document.createElement('h3');
+	h3.innerHTML = "This site uses webcomponents which don't work in all browsers! Try this site in a browser that supports them!";
+	document.body.appendChild(h3);
+}
