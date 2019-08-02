@@ -12,7 +12,6 @@ import { AppRoutingModule } from './app.route';
 @NgModule({
   declarations: [AppComponent, SearchFlightComponent, ProfileComponent, CheckoutComponent, HeaderComponent],
   imports: [BrowserModule, AppRoutingModule],
-  providers: [AppComponent],
   entryComponents: [AppComponent]
 })
 export class AppModule {
