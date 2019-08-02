@@ -4,7 +4,9 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --prod --extraWebpackConfig webpack.extra.js --output-hashing none --single-bundle true",
+    "ngx-build": "ng build --prod --extraWebpackConfig webpack.extra.js --output-hashing none --single-bundle true  --baseHref=/",
+    "build": "ng build --prod --output-hashing=none  && npm run package",
+    "package": "cat ./dist/hotel-booking/runtime-es2015.js ./dist/hotel-booking/polyfills-es2015.js ./dist/hotel-booking/scripts.js ./dist/hotel-booking/main-es2015.js > hotel-booking.js",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"

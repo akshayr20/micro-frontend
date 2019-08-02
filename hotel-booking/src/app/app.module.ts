@@ -8,16 +8,19 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { AppRoutingModule } from './app.route';
 import { HeaderComponent } from './header/header.component';
+import { APP_BASE_HREF } from '@angular/common';
 
 @NgModule({
   declarations: [AppComponent, SearchHotelComponent, UserProfileComponent, CheckoutComponent, HeaderComponent],
   imports: [BrowserModule, AppRoutingModule],
-  bootstrap: [AppComponent]
+  providers: [{ provide: APP_BASE_HREF, useValue: '/' }],
+  entryComponents: [AppComponent]
+  // bootstrap: [AppComponent]
 })
 export class AppModule {
-  // constructor(private injector: Injector) {}
-  // ngDoBootstrap() {
-  //   const myCustomElement = createCustomElement(AppComponent, { injector: this.injector });
-  //   customElements.define('app-hotel-booking', myCustomElement);
-  // }
+  constructor(private injector: Injector) {}
+  ngDoBootstrap() {
+    const myCustomElement = createCustomElement(AppComponent, { injector: this.injector });
+    customElements.define('app-hotel-booking', myCustomElement);
+  }
 }
