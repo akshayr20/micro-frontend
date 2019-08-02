@@ -1,0 +1,11 @@
+a {
+  color: #fff;
+  -webkit-transition: 0.3s color;
+  transition: 0.3s color;
+}
+
+a:hover {
+  color: #5bc0de;
+  text-decoration: none;
+  outline: none;
+}
