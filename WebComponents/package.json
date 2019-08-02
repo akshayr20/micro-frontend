@@ -26,6 +26,7 @@
     "ngx-build-plus": "^8.1.3",
     "rxjs": "~6.4.0",
     "tslib": "^1.9.0",
+    "webpack": "^4.39.0",
     "zone.js": "~0.9.1"
   },
   "devDependencies": {
