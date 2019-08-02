@@ -6,6 +6,5 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  @Input() text = 'Some Random Input to web component';
   title = 'hotel-booking';
 }

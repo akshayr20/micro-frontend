@@ -26,19 +26,21 @@
 
 		<!-- Angular Packages -->
 		<script src="./extern/core.umd.js"></script>
+		<script>
+			ng.core.enableProdMode();
+		</script>
 		<script src="./extern/common.umd.js"></script>
 		<script src="./extern/compiler.umd.js"></script>
 		<script src="./extern/platform-browser.umd.js"></script>
 		<script src="./extern/platform-browser-dynamic.umd.js"></script>
 		<script src="./extern/elements.umd.js"></script>
 
-		<!-- Custom Angular  Elements -->
-		<script src="./packages/flight.js"></script>
 		<script src="./packages/hotel.js"></script>
+		<script src="./packages/flight.js"></script>
 	</head>
 
 	<body>
-		<!-- <app-flight-booking></app-flight-booking> -->
-		<app-hotel-booking></app-hotel-booking>
+		<app-flight-booking></app-flight-booking>
+		<!-- <app-hotel-booking></app-hotel-booking> -->
 	</body>
 </html>
