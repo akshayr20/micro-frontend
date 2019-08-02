@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+	<base href="/">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -11,8 +12,10 @@
 		<script src="./flight-booking.js"></script>
 	</head>
 	<body>
-		<router-outlet tag="app-hotel-booking"></router-outlet>
+		<!-- <router-outlet  tag="app-hotel-booking"></router-outlet> -->
 		
-		<!-- <app-hotel-booking></app-hotel-booking> -->
+		<app-hotel-booking></app-hotel-booking>
+		<!-- <router-outlet tag="app-hotel-booking"></router-outlet> -->
+		<app-flight-booking></app-flight-booking>
 	</body>
 </html>

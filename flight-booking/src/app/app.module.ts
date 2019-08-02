@@ -3,11 +3,16 @@ import { NgModule, Injector } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { createCustomElement } from '@angular/elements';
+import { SearchFlightComponent } from './search-flight/search-flight.component';
+import { ProfileComponent } from './profile/profile.component';
+import { CheckoutComponent } from './checkout/checkout.component';
+import { HeaderComponent } from './header/header.component';
+import { AppRoutingModule } from './app.route';
 
 @NgModule({
-  declarations: [AppComponent],
-  imports: [BrowserModule],
-  providers: [],
+  declarations: [AppComponent, SearchFlightComponent, ProfileComponent, CheckoutComponent, HeaderComponent],
+  imports: [BrowserModule, AppRoutingModule],
+  providers: [AppComponent],
   entryComponents: [AppComponent]
 })
 export class AppModule {
