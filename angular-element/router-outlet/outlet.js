@@ -10,21 +10,11 @@ class Outlet extends HTMLElement {
 	// Specify observed attributes so that
 	// attributeChangedCallback will work
 	static get observedAttributes() {
-		return ['tag', 'id', 'label'];
+		return ['tag', 'id'];
 	}
 	constructor() {
 		super();
-		const shadow = this.attachShadow({ mode: 'open' });
-		this.wrapper = document.createElement('div');
-		shadow.appendChild(this.wrapper);
-	}
-
-	/**
-	 * @description
-	 * connectedCallback: Invoked each time the custom element is appended into a document-connected element
-	 */
-	connectedCallback() {
-		this.loadElement();
+		this.shadow = this.attachShadow({ mode: 'open' });
 	}
 
 	/**
@@ -32,8 +22,13 @@ class Outlet extends HTMLElement {
 	 * lifecycle hook
 	 * The attributeChangedCallback() callback is run whenever one of the element's attributes is changed in some way
 	 */
-	attributeChangedCallback() {
-		this.loadElement();
+
+	attributeChangedCallback(name, oldValue, newValue) {
+		switch (name) {
+			case 'tag':
+				this.loadElement();
+				break;
+		}
 	}
 
 	/**
@@ -43,15 +38,14 @@ class Outlet extends HTMLElement {
 	loadElement() {
 		this.removeElement();
 		const id = this.getAttribute('id');
-		const label = this.getAttribute('label');
 		const tagSelector = this.getAttribute('tag');
 
 		if (tagSelector) {
-			this.wrapper.setAttribute('id', tagSelector);
 			const webComp = document.createElement(tagSelector);
-			webComp.setAttribute('label', label);
-			this.wrapper.appendChild(webComp);
-			document.getElementById(id).appendChild(this.wrapper);
+			webComp.setAttribute('id', tagSelector);
+			this.shadow.appendChild(webComp);
+			const root = document.getElementById(id);
+			root.appendChild(this.shadow);
 		}
 	}
 
@@ -62,13 +56,9 @@ class Outlet extends HTMLElement {
 	removeElement() {
 		const tagSelector = this.getAttribute('tag');
 		if (tagSelector) {
-			const wrapper = document.getElementById(tagSelector);
-			if (wrapper) {
-				let child = wrapper.lastElementChild;
-				while (child) {
-					wrapper.removeChild(child);
-					child = wrapper.lastElementChild;
-				}
+			const webComp = document.getElementById(tagSelector);
+			if (webComp) {
+				webComp.remove();
 			}
 		}
 	}
